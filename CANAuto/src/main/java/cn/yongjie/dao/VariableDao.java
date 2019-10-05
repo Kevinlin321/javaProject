@@ -30,4 +30,12 @@ public interface VariableDao {
      */
     void updateFields(Connection connection, String shortName,
                       String description, Double minPhyValue, Double maxPhyValue, Double mimiAccuracy);
+
+    /**
+     *
+     * @param connection
+     * @param shortNameStr
+     * @return
+     */
+    ArrayList<Varibale> queryVariableMaxMinByShortName(Connection connection, String shortNameStr);
 }

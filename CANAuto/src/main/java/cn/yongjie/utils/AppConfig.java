@@ -14,4 +14,10 @@ public class AppConfig {
     public static String a2lBasePath = conf.getString("a2l.basePath");
 
     public static String formulaBasePath = conf.getString("formula.basePath");
+
+    public static String excelBasePath = conf.getString("excel.basePath");
+
+    public static String dcmOutputBasePath = conf.getString("dcm.outputBasePath");
+
+    public static String excalOutPath = conf.getString("excel.outputPath");
 }

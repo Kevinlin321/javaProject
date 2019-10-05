@@ -2,6 +2,7 @@ package cn.yongjie.utils;
 
 import java.lang.reflect.Array;
 import java.math.BigInteger;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class StringUitls {
@@ -48,5 +49,62 @@ public class StringUitls {
         arrayList.add(Long.parseLong(maxStr));
 
         return arrayList;
+    }
+
+    public static String modifyRootValue(String rootVariable) {
+
+        return String.format("ITFDum_%s_CW", rootVariable);
+    }
+
+    public static String mkString(ArrayList<String> stringList, String separate) {
+
+        if (stringList.size() <= 0){
+            return "";
+        } else {
+            StringBuffer stringBuffer = new StringBuffer();
+            stringBuffer.append("\'" + stringList.get(0) + "\'");
+
+            for (int i = 1; i < stringList.size(); i++) {
+                stringBuffer.append(separate);
+                stringBuffer.append("\'" + stringList.get(i) + "\'");
+            }
+
+            return stringBuffer.toString();
+        }
+    }
+
+    public static String modifyDCMbyGivenValue(String inputString, Double value){
+        if (!inputString.contains("WERT")) {
+            System.out.println("input dcm string error");
+            return inputString;
+        } else {
+//            String format = "#.";
+//            for (Integer i = 0; i < 16; i++) {
+//                format = format + "0";
+//            }
+//            DecimalFormat decimalFormat = new DecimalFormat(format);
+//            Double formatValue = Double.parseDouble(decimalFormat.format(value));
+
+
+            return String.format("   WERT %.16f", value);
+        }
+    }
+
+
+    public static String mkWhereCondition(ArrayList<String> stringList) {
+
+        if (stringList.size() <= 0){
+            return "";
+        } else {
+            StringBuffer stringBuffer = new StringBuffer();
+            stringBuffer.append("\"" + stringList.get(0) + "\"");
+
+            for (int i = 1; i < stringList.size(); i++) {
+                stringBuffer.append(" or ");
+                stringBuffer.append("\"" + stringList.get(i) + "\"");
+            }
+
+            return stringBuffer.toString();
+        }
     }
 }

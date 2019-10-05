@@ -93,6 +93,31 @@ public class VariableDaoImpl implements VariableDao {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
 
+    public ArrayList<Varibale> queryVariableMaxMinByShortName(Connection connection, String shortName) {
+
+        ArrayList<Varibale> variableList = new ArrayList<Varibale>();
+
+        String querySQL = String.format("SELECT shortName, minPhyValue, maxPhyValue, mimiAccuracy " +
+                "FROM tb_variable_test WHERE shortName in (%s)", shortName);
+
+
+        ResultSet resultSet = JDBCUtils.getInstance().executeQuery(connection, querySQL, null);
+
+        try {
+            while (resultSet.next()) {
+                Varibale varibale = new Varibale();
+                varibale.setShortName(resultSet.getString("shortName"));
+                varibale.setMinPhyValue(resultSet.getDouble("minPhyValue"));
+                varibale.setMaxPhyValue(resultSet.getDouble("maxPhyValue"));
+                varibale.setMimiAccuracy(resultSet.getDouble("mimiAccuracy"));
+                variableList.add(varibale);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return variableList;
     }
 }
