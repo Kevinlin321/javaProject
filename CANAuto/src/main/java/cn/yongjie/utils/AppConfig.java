@@ -20,4 +20,6 @@ public class AppConfig {
     public static String dcmOutputBasePath = conf.getString("dcm.outputBasePath");
 
     public static String excalOutPath = conf.getString("excel.outputPath");
+
+    public static String mdaReaderPath = conf.getString("script.mdaReaderPath");
 }

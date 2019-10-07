@@ -2,8 +2,10 @@ package cn.yongjie;
 
 import cn.yongjie.pojo.ExcelInfo;
 import cn.yongjie.service.DCMService;
+import cn.yongjie.service.INCAMDAParse;
 import cn.yongjie.service.impl.DCMServiceImpl;
 import cn.yongjie.service.impl.FormulaServiceImpl;
+import cn.yongjie.service.impl.INCAMDAParseImpl;
 import cn.yongjie.service.impl.VariableServiceImpl;
 import cn.yongjie.utils.AppConfig;
 import cn.yongjie.utils.ReadFile;
@@ -30,8 +32,11 @@ public class Test {
 //        for (int i = 0; i < excelInfos.size(); i++) {
 //            System.out.println(excelInfos.get(i));
 //        }
+//
+//        DCMService dcmService = new DCMServiceImpl();
+//        dcmService.modifyDCMFile(AppConfig.dcmBasePath, AppConfig.excelBasePath, AppConfig.dcmOutputBasePath, "max");
 
-        DCMService dcmService = new DCMServiceImpl();
-        dcmService.modifyDCMFile(AppConfig.dcmBasePath, AppConfig.excelBasePath, AppConfig.dcmOutputBasePath, "max");
+        INCAMDAParse imp = new INCAMDAParseImpl();
+        imp.parseMDAFileByPythonScript(AppConfig.mdaReaderPath);
     }
 }
